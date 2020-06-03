@@ -1,0 +1,141 @@
+$font-stack: visby-bold;
+$font-regular: visby-regular;
+$secondary-color: #19303a;
+$primary-color: #19b3e8;
+$light-color: #4a5964;
+
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+	.aboutMainImg {
+		background-image: url("https://res.cloudinary.com/dxk0bmtei/image/upload/v1587453054/biddingbaner_ja8aa4.jpg");
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position-x: center;
+		height: 80vh;
+	}
+	.tissue1 {
+		color: white;
+		font-family: $font-stack;
+		font-size: 35px;
+		font-weight: 600;
+		margin-top: 18vw;
+		text-align: center;
+	}
+	.tissue2 {
+		font-size: 16px;
+		font-weight: 500;
+		text-align: center;
+		color: white;
+		font-family: $font-regular;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.aboutMainImg {
+		background-image: url("https://res.cloudinary.com/dxk0bmtei/image/upload/v1587453054/biddingbaner_ja8aa4.jpg");
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position-x: center;
+		height: 60vh;
+		margin-bottom: 3vw;
+	}
+	.tissue1 {
+		color: white;
+		font-family: $font-stack;
+		font-size: 35px;
+		font-weight: 600;
+		margin-top: 20vw;
+	}
+	.tissue2 {
+		font-size: 16px;
+		font-weight: 500;
+		text-align: justify;
+		color: white;
+		font-family: $font-regular;
+	}
+}
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+	.aboutMainImg {
+		background-image: url("https://res.cloudinary.com/dxk0bmtei/image/upload/v1587453054/biddingbaner_ja8aa4.jpg");
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position-x: center;
+		height: 80vh;
+		margin-top: 5px;
+	}
+	.tissue1 {
+		color: white;
+		font-family: $font-stack;
+		font-size: 35px;
+		font-weight: 600;
+		margin-top: 16vw;
+	}
+	.tissue2 {
+		font-size: 16px;
+		font-weight: 500;
+		text-align: justify;
+		color: white;
+		font-family: $font-regular;
+	}
+}
+@media screen and (min-width: 1366px) and (max-width: 1600px) {
+	.aboutMainImg {
+		background-image: url("https://res.cloudinary.com/dxk0bmtei/image/upload/v1587453054/biddingbaner_ja8aa4.jpg");
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position-x: center;
+		height: 80vh;
+	}
+	.tissue1 {
+		color: white;
+		font-family: $font-stack;
+		font-size: 35px;
+		font-weight: 600;
+		margin-top: 12vw;
+	}
+	.tissue2 {
+		font-size: 16px;
+		font-weight: 500;
+		text-align: justify;
+		color: white;
+		font-family: $font-regular;
+	}
+}
+@media screen and (min-width: 1600px) {
+	.aboutMainImg {
+		background-image: url("https://res.cloudinary.com/dxk0bmtei/image/upload/v1587453054/biddingbaner_ja8aa4.jpg");
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position-x: center;
+		height: 80vh;
+		margin-top: 10px;
+	}
+	.tissue1 {
+		color: white;
+		font-family: $font-stack;
+		font-size: 45px;
+		font-weight: 600;
+		margin-top: 16vw;
+	}
+	.tissue2 {
+		font-size: 20px;
+		font-weight: 500;
+		text-align: justify;
+		color: white;
+		font-family: $font-regular;
+	}
+}

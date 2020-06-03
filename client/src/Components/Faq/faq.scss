@@ -1,0 +1,37 @@
+
+$font-stack:  visby-bold;
+$font-regular:  visby-regular;
+$secondary-color: #19303a;
+$primary-color: #19b3e8;
+$light-color:#4a5964;
+
+
+.water4{
+	color: $primary-color;
+	font-weight: 600;
+	font-size: 25px;
+	font-family: $font-stack;
+}
+.water5{
+	border-bottom: 3px solid #29abe2;
+}
+.water6{
+	font-size: 23px;
+    font-weight: 600;
+    font-family: $font-stack;
+	color: $secondary-color;
+}
+.water7{
+	font-size: 15px;
+    font-weight: 500;
+	font-family: $font-regular;
+	color: $light-color;
+}
+
+
+
+
+
+
+
+

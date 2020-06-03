@@ -1,0 +1,95 @@
+
+$font-stack:  visby-bold;
+$font-regular:  visby-regular;
+$secondary-color: #19303a;
+$primary-color: #19b3e8;
+$light-color:#4a5964;
+
+.btnapple{
+  font-family: $font-stack;
+  background-color: $primary-color;
+}
+.FormListLable{
+  font-family: $font-stack;
+}
+.FormListLableMain{
+  font-family: $font-stack;
+  color: $secondary-color;
+  font-size: 18px !important;
+}
+.radio_price{
+  padding: 0.3vw;
+    font-size: 1vw;
+    margin-top: 0.5vw;
+}
+// .formDiv{
+//    margin: 5px;
+//    font-weight: bold;
+// }
+.location{
+  display: inline;
+}
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-appear {
+  opacity: 0.01;
+}
+
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.iconBtn{
+  font-family: $font-stack;
+  background-color: $primary-color;
+  color:white;
+}
+.iconBtnRemove{
+  color:white;
+  font-family: $font-stack;
+}
+.up{
+  animation: Slide_Up 2.5s ease;
+}
+@keyframes Slide_Up{
+  0%{
+    transform: translate(250px);
+  }
+  100%{
+    transform: translate(0);
+  }
+}
+
+.formShade{
+    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    // border-radius: 0.8em;
+    margin-top: 2vw;
+    padding : 25px;
+    border : 2px solid #e4e4e4;
+    animation: Slide_Up 2.5s ease;
+}
+
+@keyframes Slide_Up{
+  0%{
+    transform: translate(250px);
+  }
+  100%{
+    transform: translate(0);
+  }
+}
