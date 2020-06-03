@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Dropdownn from '../../constant/dropdownmenu/Dropdown';
 import FormLogin from '../Login Form/form';
 import './mainheader.scss';
-import { Menu, Dropdown } from 'antd';
 
 
 class MainHeader extends Component {
@@ -31,39 +30,13 @@ class MainHeader extends Component {
         const { dropDownUser } = this.props;
         const value = JSON.parse(localStorage.getItem("loggedIn"));
         let adminUser = JSON.parse(localStorage.getItem("userData"));
-
-        const menu = (
-            <Menu>
-                {/* <Menu.Item className="dropdownTextHover">
-                    <Link rel="noopener noreferrer" to={`/market_place`}>
-                        <span className="menuTextinDrop">Marketplace</span>
-                    </Link>
-                </Menu.Item>
-                <Menu.Item className="dropdownTextHover">
-                    <Link rel="noopener noreferrer" to={`/bidding`}>
-                        <span className="menuTextinDrop">Bidding</span>
-                    </Link>
-                </Menu.Item>
-                <Menu.Item className="dropdownTextHover">
-                    <Link rel="noopener noreferrer" to={`/megaSale`}>
-                        <span className="menuTextinDrop">Mega Sale</span>
-                    </Link>
-                </Menu.Item> */}
-                {/* <Menu.Item className="dropdownTextHover">
-                    <Link rel="noopener noreferrer" to={`/advertising_agency`}>
-                        <span className="menuTextinDrop">Media Agency</span>
-                    </Link>
-                </Menu.Item> */}
-            </Menu>
-        );
-
         return (
             <div>
                 <div className="d-none d-sm-block">
                     <div className="row">
                         <div className="col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
                         <div className="col-sm-2 col-md-2 col-lg-2 col-xl-2" style={{ padding: '0' }}>
-                            <Link rel="noopener noreferrer" to={`/home`}>
+                            <Link rel="noopener noreferrer" to={`/`}>
                                 <img src="../images/selmore-logo.png" alt='img' className="selmorelogo" />
                             </Link>
                         </div>
@@ -71,22 +44,11 @@ class MainHeader extends Component {
                         <div className="col-sm-6 col-md-8 col-lg-6 col-xl-6" style={{ textAlign: "right" }}>
                             <ul class="list-inline inLineMenu">
                                 <li className="menuLiTag">
-                                    <Link rel="noopener noreferrer" to={`/home`}>
+                                    <Link rel="noopener noreferrer" to={`/`}>
                                         <span className="menuText">Home</span>
                                     </Link>
                                 </li>
-                                {/* <li className="menuLiTag">
-                                    <Dropdown overlay={menu} >
-                                        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                            <span className="buyMediaBtn">Buy Media</span>
-                                        </a>
-                                    </Dropdown>
-                                </li> */}
-                                {/* <li className="menuLiTag">
-                                    <Link rel="noopener noreferrer" to={`/newiestBillboard`}>
-                                        <span className="menuText">Newiest Billboard</span>
-                                    </Link>
-                                </li> */}
+                               
                                 <li className="menuLiTag">
                                     <Link rel="noopener noreferrer" to={`/about`}>
                                         <span className="menuText">About</span>
@@ -97,21 +59,8 @@ class MainHeader extends Component {
                                         <span className="menuText">FAQ</span>
                                     </Link>
                                 </li>
-                                {/* {adminUser !== null && adminUser.role == 'admin' ?
-                                    <li className="menuLiTag">
-                                        <Link rel="noopener noreferrer" to={`/users`}>
-                                            <span className="menuText">Users</span>
-                                        </Link>
-                                    </li>
-                                    : null}
-                                {adminUser !== null && adminUser.role == 'admin' ?
-                                    <li className="menuLiTag">
-                                        <Link rel="noopener noreferrer" to={`/cart`}>
-                                            <span className="menuText">Cart</span>
-                                        </Link>
-                                    </li>
-                                    : null} */}
-                                {adminUser !== null && adminUser.role == 'admin' ?
+                             
+                                {/* {adminUser !== null && adminUser.role == 'admin' ? */}
                                     <li className="menuLiTag">
                                         <Link rel="noopener noreferrer" to={`/list_add`}>
                                             <button type="button" className="btn btn-primary listAdBtn">
@@ -119,9 +68,9 @@ class MainHeader extends Component {
                                             </button>
                                         </Link>
                                     </li>
-                                    :
+                                    {/* :
                                     null
-                                }
+                                } */}
                                 {dropDownUser || value
                                     ?
                                     <li className="menuLiTag">

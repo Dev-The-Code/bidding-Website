@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Filtration from './bannerFiltration/bannerFiltration';
 import './homeBanner.scss';
-import { Link } from 'react-router-dom';
 
 
 class HomeBanner extends Component {
@@ -22,7 +20,6 @@ class HomeBanner extends Component {
                         <div className="col-1 col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>
                     </div>
                 </div>
-                {/* <Filtration /> */}
             </div>
         );
     }

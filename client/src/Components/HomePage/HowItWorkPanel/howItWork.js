@@ -25,7 +25,7 @@ class HowItWork extends Component {
                                     <div className="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 twoBoxesInside">
                                         <h3 className="sellerBuyerHead">Are you a seller?</h3>
                                         <p className="sellerBuyerText">List your ad media for rent</p>
-                                        <Link to={`/seller`}>
+                                        <Link to={`/list_add`}>
                                             <button className="btn buySellBtn">Start selling</button>
                                         </Link>
                                     </div>
@@ -33,7 +33,7 @@ class HowItWork extends Component {
                                     <div className="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5 twoBoxesInside">
                                         <h3 className="sellerBuyerHead">Are you a Buyer?</h3>
                                         <p className="sellerBuyerText">Advertise your brand easily</p>
-                                        <Link to={`/buyer`}>
+                                        <Link to={`/`}>
                                             <button className="btn buySellBtn">Buy ad media</button>
                                         </Link>
                                     </div>

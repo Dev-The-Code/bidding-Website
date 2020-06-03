@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header/mainheader';
 import Banner from './HomeBanner/homeBanner';
-import MegaSale from './MegaSalePanel/megaSalePanel';
-import BrowseCategory from './BrowseByCategoryPanel/browseByCate';
-import NewiestBill from './NewestBillboardsPanel/newestBillboards';
-import PrestigiousClients from './PrestigiousClientsPanel/prestigiousClientsPanel';
-import BrowseTopCity from './TopCitiesBillboardPanel/topCitiesBillboard';
-import ListingAdPanel from './ListingAdPanel/listingAd';
 import HowItWork from './HowItWorkPanel/howItWork';
 import Footer from '../Footer/mainFooter';
 import { HttpUtils } from '../../Services/HttpUtils';
@@ -23,142 +17,142 @@ class Home extends Component {
     }
   }
 
-  componentWillMount() {
-    window.scrollTo(0, 0);
-    this.getMegaSaleBillboards()
-    this.getBiddingBillboard()
-  }
+  // componentWillMount() {
+  //   window.scrollTo(0, 0);
+  //   this.getMegaSaleBillboards()
+  //   this.getBiddingBillboard()
+  // }
 
-  getMegaSaleBillboards = async () => {
-    let response = await HttpUtils.get('getallmegabillboard');
-    if (response) {
-      if (response.code == 200) {
-        let data = response.content;
+  // getMegaSaleBillboards = async () => {
+  //   let response = await HttpUtils.get('getallmegabillboard');
+  //   if (response) {
+  //     if (response.code == 200) {
+  //       let data = response.content;
 
-        this.setState({
-          megaSalebillBoards: data
-        })
-      }
-    }
+  //       this.setState({
+  //         megaSalebillBoards: data
+  //       })
+  //     }
+  //   }
 
-    this.megaSalebillBoardData()
-  }
+  //   this.megaSalebillBoardData()
+  // }
 
-  megaSalebillBoardData = async () => {
-    const { megaSalebillBoards } = this.state;
+  // megaSalebillBoardData = async () => {
+  //   const { megaSalebillBoards } = this.state;
 
-    megaSalebillBoards.map((elem, key) => {
-      let elemObj = elem;
-      let timeTillDateStart = `${`${elemObj.saleEndDate}, ${elemObj.saleEndTime}`}`;
-      const now = moment();
-      const then = moment(timeTillDateStart);
-      var totalSec = then.diff(now, 'seconds');
-      var hours = parseInt(totalSec / 3600);
-      var minutes = parseInt(totalSec / 60) % 60;
-      var seconds = totalSec % 60;
-      if (hours <= 0 && minutes <= 0 && seconds <= 0) {
-        this.removedData(elem._id, elem)
-      }
-    })
+  //   megaSalebillBoards.map((elem, key) => {
+  //     let elemObj = elem;
+  //     let timeTillDateStart = `${`${elemObj.saleEndDate}, ${elemObj.saleEndTime}`}`;
+  //     const now = moment();
+  //     const then = moment(timeTillDateStart);
+  //     var totalSec = then.diff(now, 'seconds');
+  //     var hours = parseInt(totalSec / 3600);
+  //     var minutes = parseInt(totalSec / 60) % 60;
+  //     var seconds = totalSec % 60;
+  //     if (hours <= 0 && minutes <= 0 && seconds <= 0) {
+  //       this.removedData(elem._id, elem)
+  //     }
+  //   })
 
-  }
+  // }
 
-  removedData = async (objectId, data) => {
-    let updateMarketPlace = {
-      objectId: data.billboardId,
-      avalibleOn: '',
-      avalibleOnId: '',
-      status: "No Available",
-    }
-    let respMatkietPlace = await HttpUtils.post('listadd', updateMarketPlace);
-    let booked = {
-      objectId: objectId
-    }
-    let response = await HttpUtils.post('megaSaleDelete', booked);
+  // removedData = async (objectId, data) => {
+  //   let updateMarketPlace = {
+  //     objectId: data.billboardId,
+  //     avalibleOn: '',
+  //     avalibleOnId: '',
+  //     status: "No Available",
+  //   }
+  //   let respMatkietPlace = await HttpUtils.post('listadd', updateMarketPlace);
+  //   let booked = {
+  //     objectId: objectId
+  //   }
+  //   let response = await HttpUtils.post('megaSaleDelete', booked);
 
-    if (response) {
-      if (response.code == 200) {
-        this.getMegaSaleBillboards()
-      }
-    }
+  //   if (response) {
+  //     if (response.code == 200) {
+  //       this.getMegaSaleBillboards()
+  //     }
+  //   }
 
-  }
-
-
-  getBiddingBillboard = async () => {
-    let response = await HttpUtils.get('getbiddingbillboard');
-    if (response) {
-      if (response.code == 200) {
-        let data = response.content;
-        data.map((elem, key) => {
-          let elemObj = elem;
-          let timeTillDateStart = `${`${elemObj.biddingEndDate}, ${elemObj.biddingEndTime}`}`;
-          const now = moment();
-          const then = moment(timeTillDateStart);
-          var totalSec = then.diff(now, 'seconds');
-          var hours = parseInt(totalSec / 3600);
-          var minutes = parseInt(totalSec / 60) % 60;
-          var seconds = totalSec % 60;
-          if (hours <= 0 && minutes <= 0 && seconds <= 0) {
-            this.highestBidder(elem._id, elem)
-          }
-        })
-      }
-    }
-  }
-
-  highestBidder = async (objectId, data) => {
-    let obj = {
-      id: objectId
-    }
-    let biddingBiggerAmount = 0;
-    let bidderDetail;
-    let response = await HttpUtils.post('getspecificBiddingbillboardHistory', obj);
-    if (response) {
-      if (response.code == 200) {
-        if (response.content.length > 0) {
-          let biddingData = response.content;
-          for (var i in biddingData) {
-            if (Number(biddingData[i].bidAamount) > Number(biddingBiggerAmount)) {
-              biddingBiggerAmount = biddingData[i].bidAamount;
-              bidderDetail = biddingData[i]
-            }
-          }
-          this.bookedBidderBillboard(bidderDetail, data)
-        }
-        else {
-          let obj = {
-            objectId: objectId,
-          }
-          let response = await HttpUtils.post('biddingBillboardDelete', obj);
-        }
+  // }
 
 
-      }
-    }
-  }
+  // getBiddingBillboard = async () => {
+  //   let response = await HttpUtils.get('getbiddingbillboard');
+  //   if (response) {
+  //     if (response.code == 200) {
+  //       let data = response.content;
+  //       data.map((elem, key) => {
+  //         let elemObj = elem;
+  //         let timeTillDateStart = `${`${elemObj.biddingEndDate}, ${elemObj.biddingEndTime}`}`;
+  //         const now = moment();
+  //         const then = moment(timeTillDateStart);
+  //         var totalSec = then.diff(now, 'seconds');
+  //         var hours = parseInt(totalSec / 3600);
+  //         var minutes = parseInt(totalSec / 60) % 60;
+  //         var seconds = totalSec % 60;
+  //         if (hours <= 0 && minutes <= 0 && seconds <= 0) {
+  //           this.highestBidder(elem._id, elem)
+  //         }
+  //       })
+  //     }
+  //   }
+  // }
 
-  bookedBidderBillboard = async (bidderDetail, data) => {
-    bidderDetail.objectId = '';
-    let response = await HttpUtils.post('bidderBillboardBooked', bidderDetail);
-    if (response) {
-      if (response.code == 200) {
+  // highestBidder = async (objectId, data) => {
+  //   let obj = {
+  //     id: objectId
+  //   }
+  //   let biddingBiggerAmount = 0;
+  //   let bidderDetail;
+  //   let response = await HttpUtils.post('getspecificBiddingbillboardHistory', obj);
+  //   if (response) {
+  //     if (response.code == 200) {
+  //       if (response.content.length > 0) {
+  //         let biddingData = response.content;
+  //         for (var i in biddingData) {
+  //           if (Number(biddingData[i].bidAamount) > Number(biddingBiggerAmount)) {
+  //             biddingBiggerAmount = biddingData[i].bidAamount;
+  //             bidderDetail = biddingData[i]
+  //           }
+  //         }
+  //         this.bookedBidderBillboard(bidderDetail, data)
+  //       }
+  //       else {
+  //         let obj = {
+  //           objectId: objectId,
+  //         }
+  //         let response = await HttpUtils.post('biddingBillboardDelete', obj);
+  //       }
 
-        let updateMarketPlace = {
-          objectId: data.billboardId,
-          avalibleOn: '',
-          avalibleOnId: '',
-          status: "No Available",
-        }
-        let respMatkietPlace = await HttpUtils.post('listadd', updateMarketPlace);
 
-        let obj = {
-          objectId: bidderDetail.biddingBillboardId,
-        }
-        let response = await HttpUtils.post('biddingBillboardDelete', obj);
-      }
-    }
-  }
+  //     }
+  //   }
+  // }
+
+  // bookedBidderBillboard = async (bidderDetail, data) => {
+  //   bidderDetail.objectId = '';
+  //   let response = await HttpUtils.post('bidderBillboardBooked', bidderDetail);
+  //   if (response) {
+  //     if (response.code == 200) {
+
+  //       let updateMarketPlace = {
+  //         objectId: data.billboardId,
+  //         avalibleOn: '',
+  //         avalibleOnId: '',
+  //         status: "No Available",
+  //       }
+  //       let respMatkietPlace = await HttpUtils.post('listadd', updateMarketPlace);
+
+  //       let obj = {
+  //         objectId: bidderDetail.biddingBillboardId,
+  //       }
+  //       let response = await HttpUtils.post('biddingBillboardDelete', obj);
+  //     }
+  //   }
+  // }
 
 
   showDropDown = () => {

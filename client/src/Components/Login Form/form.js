@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './loginform.scss';
 import {
-  Form, Input,
+  Form,
 } from 'antd';
 import { HttpUtils } from '../../Services/HttpUtils';
 import SingUPForm from '../SingUpForm/singUpForm';
@@ -90,11 +90,6 @@ class FormLogin extends Component {
           isLoader: false,
         })
       }
-      // else {
-      //   this.setState({ isLoader: true })
-      // }
-      // document.getElementById('closss').click();
-      // this.props.showDropDown();
     }
     catch (error) {
       //error handling if user enter wrong email or password
@@ -109,7 +104,6 @@ class FormLogin extends Component {
 
 
   render() {
-    const { getFieldDecorator } = this.props.form;
     const { isLoader, isAlert, createAcountform, mgs } = this.state
     return (
       <div className="container">
