@@ -37,7 +37,7 @@ class MainHeader extends Component {
                         <div className="col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
                         <div className="col-sm-2 col-md-2 col-lg-2 col-xl-2" style={{ padding: '0' }}>
                             <Link rel="noopener noreferrer" to={`/`}>
-                                <img src="../images/selmore-logo.png" alt='img' className="selmorelogo" />
+                                <img src="../images/selmore-logo.png" alt='img' className="selmorelogo" style={{ width: 150, height: 100, }} />
                             </Link>
                         </div>
                         <div className="col-sm-2 col-md-1 col-lg-2 col-xl-2"></div>
@@ -48,7 +48,7 @@ class MainHeader extends Component {
                                         <span className="menuText">Home</span>
                                     </Link>
                                 </li>
-                               
+
                                 <li className="menuLiTag">
                                     <Link rel="noopener noreferrer" to={`/about`}>
                                         <span className="menuText">About</span>
@@ -59,16 +59,16 @@ class MainHeader extends Component {
                                         <span className="menuText">FAQ</span>
                                     </Link>
                                 </li>
-                             
+
                                 {/* {adminUser !== null && adminUser.role == 'admin' ? */}
-                                    <li className="menuLiTag">
-                                        <Link rel="noopener noreferrer" to={`/list_add`}>
-                                            <button type="button" className="btn btn-primary listAdBtn">
-                                                <span className=""> List Media </span>
-                                            </button>
-                                        </Link>
-                                    </li>
-                                    {/* :
+                                <li className="menuLiTag">
+                                    <Link rel="noopener noreferrer" to={`/list_add`}>
+                                        <button type="button" className="btn btn-primary listAdBtn">
+                                            <span className=""> List Media </span>
+                                        </button>
+                                    </Link>
+                                </li>
+                                {/* :
                                     null
                                 } */}
                                 {dropDownUser || value
@@ -124,18 +124,7 @@ class MainHeader extends Component {
                                                 <span className="menuTextMOB">Home</span>
                                             </Link>
                                         </li>
-                                        {/* <li className="">
-                                            <Dropdown overlay={menu} >
-                                                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                                    <span className="buyMediaBtnMOB">Buy Media</span>
-                                                </a>
-                                            </Dropdown>
-                                        </li>
-                                        <li>
-                                            <Link rel="noopener noreferrer" to={`/newiestBillboard`}>
-                                                <span className="menuTextMOB">Newiest Billboard</span>
-                                            </Link>
-                                        </li> */}
+
                                         <li className="">
                                             <Link rel="noopener noreferrer" to={`/about`}>
                                                 <span className="menuTextMOB">About</span>
@@ -146,13 +135,6 @@ class MainHeader extends Component {
                                                 <span className="menuTextMOB">FAQ</span>
                                             </Link>
                                         </li>
-                                        {/* {adminUser !== null && adminUser.role == 'admin' ?
-                                            <li className="">
-                                                <Link rel="noopener noreferrer" to={`/users`}>
-                                                    <span className="menuTextMOB">Users</span>
-                                                </Link>
-                                            </li>
-                                            : null} */}
                                         {adminUser !== null && adminUser.role == 'admin' ?
                                             <li className="">
                                                 <Link rel="noopener noreferrer" to={`/cart`}>

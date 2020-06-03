@@ -58,7 +58,7 @@ class Dropdownn extends Component {
         } */}
        
         <Menu.Item onClick={this.logOut} className="dropdownTextHover">
-          <Link rel="noopener noreferrer" to={`/home`} onClick={this.closeNav}>
+          <Link rel="noopener noreferrer" to={`/`} onClick={this.closeNav}>
             <span className="menuTextinDrop">Log Out</span>
           </Link>
         </Menu.Item>

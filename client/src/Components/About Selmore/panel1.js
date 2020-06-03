@@ -9,14 +9,14 @@ class Panel1 extends Component {
 					<div className="col-1 col-md-1 col-lg-1 col-xl-1"></div>
 					<div className="col-10 col-md-8 col-lg-7 col-xl-7">
 						<h4 className="tissue1">
-							ABOUT SELMORE
+							ABOUT Bidding Web App
 						</h4>
 						<p className="tissue2">To built a world-class, result oriented company,
 						by providing accurate and cost-effective, Out-of-Home Communication solutions,
 						with growlers quality in real time and client centric services, by developing
 						and using the best advertising tools, devices and systems through a team of
 						energetic and motivated professionals, with world-class talent and skill
-						necessary to make “SELMORE ADVERTISING” the leading Out-of-Home
+						necessary to make Bidding Web App ” the leading Out-of-Home
 						Communication Specialist
 						</p>
 					</div>

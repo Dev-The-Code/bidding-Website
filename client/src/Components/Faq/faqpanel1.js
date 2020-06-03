@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import './faq.scss';
-import SelmoreCom from './selmoreCom.js';
-import ItWork from './itWork.js';
-import Charges from './charges.js';
-import Space from './space';
 
 
 class Faqbannerfoot extends Component {

@@ -38,6 +38,7 @@ class FormLogin extends Component {
     })
     // fetch signIn api
     let response = await HttpUtils.post('signin', values);
+    console.log(response, 'response')
     try {
       if (response.code === 200) {
         localStorage.setItem('loggedIn', JSON.stringify(this.state.loggedIn))
@@ -80,7 +81,7 @@ class FormLogin extends Component {
         this.setState({
           isLoader: false,
           createAcountform: true,
-          isAlert : false
+          isAlert: false
         });
       }
       else {
