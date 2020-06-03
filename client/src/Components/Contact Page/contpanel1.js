@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Homepanel4 from '../panel4';
+import Homepanel4 from './panel4';
 import './contact.scss';
 
 class Contpanel1 extends Component {

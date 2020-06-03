@@ -9,7 +9,6 @@ import MainPage from './Components/HomePage/homePage';
 import About from './Components/About Selmore/about';
 import Faq from './Components/Faq/faq';
 import Contactpage from './Components/Contact Page/contact';
-import Bidding from './Components/Bidding/bidding';
 import Billofbidding1 from './Components/Billboard of bidding1/billofbidding';
 import './App.css';
 import LogOut from './Components/LogOut/logOut'
@@ -17,7 +16,6 @@ import ProfileView from './Components/Profile/profile';
 import { Provider } from 'react-redux';
 import store from './store';
 import AddBillboards from './Components/BillboardForm/addBillboards';
-import MarketPlace from './Components/MarketPlace/marketPlace';
 import Dashboard from './Components/Dashboard/dashboard';
 import Carts from './Components/Carts of Book billboards/carts';
 
@@ -44,10 +42,10 @@ class Routes extends Component {
   render() {
     return (
       <div className='App'>
-        <Provider store={store}>
+        {/* <Provider store={store}> */}
           <BrowserRouter>
             <div>
-            <Route path="/"
+            <Route exact path="/"
                 render={props => {
                   return <MainPage {...props}
                     showDropDown={this.showDropDown} dropDownUser={this.dropDownUser}
@@ -72,13 +70,6 @@ class Routes extends Component {
               <Route path="/contact"
                 render={props => {
                   return <Contactpage {...props}
-                    showDropDown={this.showDropDown} dropDownUser={this.dropDownUser}
-                    hideDropDown={this.hideDropDown} />
-                }}
-              ></Route>
-              <Route path="/bidding"
-                render={props => {
-                  return <Bidding {...props}
                     showDropDown={this.showDropDown} dropDownUser={this.dropDownUser}
                     hideDropDown={this.hideDropDown} />
                 }}
@@ -121,15 +112,6 @@ class Routes extends Component {
                 }}
               ></Route>
 
-
-              <Route path='/market_place'
-
-                render={props => {
-                  return <MarketPlace {...props}
-                    showDropDown={this.showDropDown} dropDownUser={this.dropDownUser}
-                    hideDropDown={this.hideDropDown} />
-                }}
-              ></Route>
               <Route path='/dashboard'
                 render={props => {
                   return <Dashboard {...props}
@@ -139,7 +121,7 @@ class Routes extends Component {
               ></Route>
             </div>
           </BrowserRouter>
-        </Provider>
+        {/* </Provider> */}
       </div >
     );
   }

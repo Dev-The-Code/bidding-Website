@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 import './bidding.scss';
-import { Link } from 'react-router-dom';
-import { HttpUtils } from '../../Services/HttpUtils';
-import moment from 'moment';
-import {
-	Checkbox, Row, Col, Spin, Icon
-} from 'antd';
 
 class Biddpanel1 extends Component {
 	constructor(props) {

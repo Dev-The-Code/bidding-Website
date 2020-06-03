@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Panel1 from './panel1';
 import Header from '../Header/mainheader';
-
 import Footer from '../Footer/mainFooter';
 import './about.scss';
 
@@ -35,7 +34,6 @@ class About extends Component {
       <div>
         <Header showDropDown={this.showDropDown} hideDropDown={this.hideDropDown} dropDownUser={dropDownUser} />
         <Panel1 />
-        {/* <Panel2 /> */}
         <Footer />
       </div>
     );
