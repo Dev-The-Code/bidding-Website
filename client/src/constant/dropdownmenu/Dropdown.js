@@ -14,6 +14,7 @@ class Dropdownn extends Component {
     this.logOut = this.logOut.bind(this)
   }
 
+
   //clear local storage & redirect to Home
   logOut() {
     localStorage.removeItem('loggedIn');
@@ -30,8 +31,8 @@ class Dropdownn extends Component {
 
 
   render() {
-    let userName = JSON.parse(localStorage.getItem('userName'));
     let adminUser = JSON.parse(localStorage.getItem("userData"));
+    let userName = JSON.parse(localStorage.getItem('userName')).toUpperCase();
 
     const Dropmenu = (
       <Menu>
@@ -40,23 +41,23 @@ class Dropdownn extends Component {
             <span className="menuTextinDrop">Profile</span>
           </Link>
         </Menu.Item>
-        {/* {adminUser !== null && adminUser.role == 'admin' ? */}
+        {adminUser !== null && adminUser.role != undefined && adminUser.role == 'admin' ?
           <Menu.Item className="dropdownTextHover">
             <Link rel="noopener noreferrer" to={`/dashboard`}>
               <span className="menuTextinDrop">Dashboard</span>
             </Link>
-          </Menu.Item> 
-          {/* : null
-        } */}
-        {/* {adminUser !== null && adminUser.role == 'admin' ? */}
-          <Menu.Item className="dropdownTextHover">
-            <Link rel="noopener noreferrer" to={`/cart`}>
-              <span className="menuTextinDrop">Cart</span>
-            </Link>
-          </Menu.Item> 
-          {/* : null
-        } */}
-       
+          </Menu.Item>
+          : null
+        }
+        {adminUser !== null && adminUser.role != undefined && adminUser.role == 'admin' ?
+        <Menu.Item className="dropdownTextHover">
+          <Link rel="noopener noreferrer" to={`/cart`}>
+            <span className="menuTextinDrop">Cart</span>
+          </Link>
+        </Menu.Item>
+        : null
+        }
+
         <Menu.Item onClick={this.logOut} className="dropdownTextHover">
           <Link rel="noopener noreferrer" to={`/`} onClick={this.closeNav}>
             <span className="menuTextinDrop">Log Out</span>
@@ -82,7 +83,7 @@ class Dropdownn extends Component {
           </Dropdown>
         </div>
 
-     
+
       </div>
     );
   }

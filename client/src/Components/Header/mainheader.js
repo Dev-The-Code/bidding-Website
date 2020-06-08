@@ -3,16 +3,37 @@ import { Link } from 'react-router-dom';
 import Dropdownn from '../../constant/dropdownmenu/Dropdown';
 import FormLogin from '../Login Form/form';
 import './mainheader.scss';
-
+import { HttpUtils } from '../../Services/HttpUtils'
+import { InputNumber } from 'antd';
 
 class MainHeader extends Component {
     constructor(props) {
         super(props);
         this.state = {
             navbar: false,
+            bidCoins: 0
         }
     }
 
+    componentDidMount() {
+        this.getBidCoinsOfUser()
+    }
+
+    getBidCoinsOfUser = async () => {
+        let adminUser = JSON.parse(localStorage.getItem("userData"));
+        let obj = {
+            id: adminUser._id
+        }
+        let response = await HttpUtils.post('getUserData', obj);
+        if (response) {
+            if (response.code == 200) {
+                let data = response.content[0]
+                this.setState({
+                    bidCoins: data.bidCoins
+                })
+            }
+        }
+    }
 
     openNav = () => {
         this.setState({
@@ -27,9 +48,9 @@ class MainHeader extends Component {
     }
 
     render() {
+        const { bidCoins } = this.state;
         const { dropDownUser } = this.props;
         const value = JSON.parse(localStorage.getItem("loggedIn"));
-        let adminUser = JSON.parse(localStorage.getItem("userData"));
         return (
             <div>
                 <div className="d-none d-sm-block">
@@ -60,7 +81,6 @@ class MainHeader extends Component {
                                     </Link>
                                 </li>
 
-                                {/* {adminUser !== null && adminUser.role == 'admin' ? */}
                                 <li className="menuLiTag">
                                     <Link rel="noopener noreferrer" to={`/list_add`}>
                                         <button type="button" className="btn btn-primary listAdBtn">
@@ -68,9 +88,10 @@ class MainHeader extends Component {
                                         </button>
                                     </Link>
                                 </li>
-                                {/* :
-                                    null
-                                } */}
+                                <li className="menuLiTag">
+                                    <InputNumber min={0} max={1000} disabled={true} defaultValue={bidCoins} />
+                                </li>
+
                                 {dropDownUser || value
                                     ?
                                     <li className="menuLiTag">
@@ -135,24 +156,18 @@ class MainHeader extends Component {
                                                 <span className="menuTextMOB">FAQ</span>
                                             </Link>
                                         </li>
-                                        {adminUser !== null && adminUser.role == 'admin' ?
-                                            <li className="">
-                                                <Link rel="noopener noreferrer" to={`/cart`}>
-                                                    <span className="menuTextMOB">Cart</span>
-                                                </Link>
-                                            </li>
-                                            : null}
-                                        {adminUser !== null && adminUser.role == 'admin' ?
-                                            <li className="">
-                                                <Link rel="noopener noreferrer" to={`/list_add`}>
-                                                    <button type="button" className="btn btn-primary listAdBtn">
-                                                        <span className=""> List Media </span>
-                                                    </button>
-                                                </Link>
-                                            </li>
-                                            :
-                                            null
-                                        }
+
+                                        <li className="">
+                                            <Link rel="noopener noreferrer" to={`/list_add`}>
+                                                <button type="button" className="btn btn-primary listAdBtn">
+                                                    <span className=""> List Media </span>
+                                                </button>
+                                            </Link>
+                                        </li>
+                                        <li className="menuLiTag">
+                                            <InputNumber min={0} max={1000} disabled={true} defaultValue={bidCoins} />
+                                        </li>
+
                                         {dropDownUser || value
                                             ?
                                             <li className="">

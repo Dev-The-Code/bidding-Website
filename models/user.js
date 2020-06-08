@@ -6,14 +6,12 @@ const bcrypt = require('bcrypt-nodejs');
 const userSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   password: { type: String },
-  companyName: { type: String },
+  name: { type: String },
   randomno: { type: String },
   mobileNo: { type: String },
-  landlineNo: { type: String },
-  role: { type: String },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: String },
-  userStatus: { type: String },
+  bidCoins: { type: Number },
 });
 
 //on Save Hook, encrypt password

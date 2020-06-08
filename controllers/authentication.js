@@ -30,30 +30,26 @@ var smtpTransport = nodemailer.createTransport({
 });
 
 exports.signin = function (req, res, next) {
-  //user has already had their email and password auth'd
-  //we just need to give them a token
+
   var user = req.body.email;
   User.findOne({ email: user }, function (err, user) {
-    console.log(user);
-    if (user.userStatus == 'approved') {
-      //var username = user.firstname +''+ user.lastname;
+    if (err) {
       res.send({
-        token: tokenForUser(req.user),
-        _id: req.user.id,
-        email: req.user.email,
-        code: 200,
-        companyName: user.companyName,
-        role: user.role,
-        landlineNo: user.landlineNo,
-        mobileNo: user.mobileNo,
-        userStatus: user.userStatus
-      });
+        code: 400,
+        msg: 'Check email password'
+      })
+
     }
     else {
       res.send({
-        code: 400,
-        msg: 'Your are not approved user kindly contact admin or system administrator of selmore.com'
-      })
+        token: tokenForUser(req.user),
+        code: 200,
+        _id: req.user.id,
+        email: req.user.email,
+        mobileNo: user.mobileNo,
+        name: user.name,
+        bidCoins: user.bidCoins
+      });
     }
   })
 }
@@ -62,17 +58,9 @@ exports.signin = function (req, res, next) {
 exports.signup = function (req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
-  // const firstName = req.body.firstName;
-  // const lastName = req.body.lastName;
-  // const contactNo = req.body.contactNo;
   const mobileNo = req.body.mobileNo;
-  const landlineNo = req.body.landlineNo;
-  // const fullName  = req.body.fullName;
-  // const type = req.body.type;
-  const role = req.body.role;
-  const companyName = req.body.companyName;
-  const userStatus = "pending";
-  // const RoleAsBuyer = req.body.RoleAsBuyer;
+  const name = req.body.name;
+  const bidCoins = req.body.bidCoins;
 
 
   if (!email || !password) {
@@ -91,13 +79,10 @@ exports.signup = function (req, res, next) {
     const user = new User({
       email: email,
       password: password,
-      landlineNo: landlineNo,
       mobileNo: mobileNo,
       randomno: rand,
-      companyName: companyName,
-      userStatus: userStatus,
-      role: role
-
+      name: name,
+      bidCoins: bidCoins
     });
     user.save(function (err) {
       if (err) { return next(err); }
@@ -177,6 +162,27 @@ exports.signup = function (req, res, next) {
     });
   });
 }
+
+exports.getUserData = function (req, res, next) {
+  let id = req.body.id;
+  User.find({ "_id": id }, function (err, data) {
+    if (err) {
+      res.send({
+        msg: 'Error getting billboard',
+        code: 404,
+        err: err
+      })
+    }
+    else if (data) {
+      res.send({
+        content: data,
+        msg: 'Get user data',
+        code: 200
+      })
+    }
+  })
+}
+
 exports.getemails = function (req, res, next) {
   User.find(function (err, data) {
     if (err) {
@@ -199,31 +205,32 @@ exports.getemails = function (req, res, next) {
     }
   })
 }
-exports.getcompanyname = function (req, res, next) {
-  User.find(function (err, companyname) {
-    if (err) {
-      res.send({
-        code: 404,
-        content: err,
-        msg: 'user will not get from server some internal issue.'
-      })
-    }
-    else if (companyname) {
-      const comnpanynames = [];
-      for (var i = 0; i < companyname.length; i++) {
-        comnpanynames.push({
-          companyName: companyname[i].companyName,
-          _id: companyname[i]._id
-        })
-      }
-      res.send({
-        code: 200,
-        content: comnpanynames,
-        msg: 'All user emails'
-      })
-    }
-  })
-}
+
+// exports.getcompanyname = function (req, res, next) {
+//   User.find(function (err, companyname) {
+//     if (err) {
+//       res.send({
+//         code: 404,
+//         content: err,
+//         msg: 'user will not get from server some internal issue.'
+//       })
+//     }
+//     else if (companyname) {
+//       const comnpanynames = [];
+//       for (var i = 0; i < companyname.length; i++) {
+//         comnpanynames.push({
+//           companyName: companyname[i].companyName,
+//           _id: companyname[i]._id
+//         })
+//       }
+//       res.send({
+//         code: 200,
+//         content: comnpanynames,
+//         msg: 'All user emails'
+//       })
+//     }
+//   })
+// }
 
 
 exports.getAllUsers = function (req, res, next) {
@@ -251,21 +258,21 @@ exports.getAllUsers = function (req, res, next) {
   })
 }
 
-exports.changeStatus = function (req, res, next) {
-  const id = req.body.id;
-  const userStatus = req.body.userStatus;
-  User.update(
-    { _id: id },
-    {
-      $set: {
-        userStatus: userStatus
-      }
-    }
-  ).then((response) => {
-    res.send({
-      code: 200,
-      msg: 'Status updated successfully',
-      content: response
-    });
-  }).catch(() => res.status(422).send({ msg: 'something went wrong' }));
-}
+// exports.changeStatus = function (req, res, next) {
+//   const id = req.body.id;
+//   const userStatus = req.body.userStatus;
+//   User.update(
+//     { _id: id },
+//     {
+//       $set: {
+//         userStatus: userStatus
+//       }
+//     }
+//   ).then((response) => {
+//     res.send({
+//       code: 200,
+//       msg: 'Status updated successfully',
+//       content: response
+//     });
+//   }).catch(() => res.status(422).send({ msg: 'something went wrong' }));
+// }

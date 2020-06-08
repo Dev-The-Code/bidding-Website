@@ -10,11 +10,10 @@ class SingUpForm extends Component {
         super()
         //initilize states
         this.state = {
-            companyName: '',
+            name: '',
             email: '',
             password: '',
             confrimPassword: '',
-            landlineNo: "",
             mobileNo: "",
             emailsArr: [],
             registerBtn: false
@@ -78,11 +77,10 @@ class SingUpForm extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 this.setState({
-                    companyName: '',
+                    name: '',
                     email: '',
                     password: '',
                     confrimPassword: '',
-                    landlineNo: "",
                     mobileNo: ""
                 })
                 this.props.fectSignUpApiFunc(values)
@@ -92,7 +90,7 @@ class SingUpForm extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { companyName, email, password, confrimPassword, landlineNo, mobileNo } = this.state;
+        const { name, email, password, confrimPassword,  mobileNo } = this.state;
         return (
             <div >
                 <div>
@@ -104,16 +102,16 @@ class SingUpForm extends Component {
                                         <div className="col-12 col-md-6 col-lg-6 col-xl-6">
                                             <label style={{ marginBottom: '0px' }}>
                                                 <span className="school10">
-                                                    Company name:
+                                                    Name:
                                                 </span>
                                             </label>
                                             <Form.Item>
-                                                {getFieldDecorator('companyName', {
-                                                    initialValue: companyName,
-                                                    rules: [{ required: true, message: 'Please enter your company name' }],
+                                                {getFieldDecorator('name', {
+                                                    initialValue: name,
+                                                    rules: [{ required: true, message: 'Please enter your Name' }],
                                                 })(
                                                     <Input
-                                                        placeholder="Company name"
+                                                        placeholder="Name"
                                                         className="bid_Input"
                                                     />
                                                 )}
@@ -194,7 +192,7 @@ class SingUpForm extends Component {
                                         </div>
                                     </div><br />
                                     <div className="row" style={{ marginTop: '-1.5vw' }}>
-                                        <div className="col-12 col-md-6 col-lg-6 col-xl-6">
+                                        {/* <div className="col-12 col-md-6 col-lg-6 col-xl-6">
                                             <label style={{ marginBottom: '0px' }}>
                                                 <span className="school10">
                                                     Landline no :
@@ -216,7 +214,7 @@ class SingUpForm extends Component {
                                                     />
                                                 )}
                                             </Form.Item>
-                                        </div>
+                                        </div> */}
                                         <div className="col-12 col-md-6 col-lg-6 col-xl-6">
                                             <label style={{ marginBottom: '0px' }}>
                                                 <span className="school10">
@@ -241,6 +239,29 @@ class SingUpForm extends Component {
                                                 )}
                                             </Form.Item>
                                         </div>
+                                        {/* <div className="col-12 col-md-6 col-lg-6 col-xl-6">
+                                            <label style={{ marginBottom: '0px' }}>
+                                                <span className="school10">
+                                                    Seller/Buyer:
+                                            </span>
+                                            </label>
+                                            <Form.Item>
+                                                {getFieldDecorator('purposeUser', {
+                                                    initialValue: purposeUser,
+                                                    rules: [{
+                                                        required: true,
+                                                        message: 'Kindly select radio button',
+                                                        whitespace: true
+                                                    }],
+                                                })(
+                                                    <Radio.Group>
+                                                        <Radio value="buyer">item 1</Radio>
+                                                        <Radio value="seller">item 2</Radio>
+                                                        <Radio value="c">item 3</Radio>
+                                                    </Radio.Group>,
+                                                )}
+                                            </Form.Item>
+                                        </div> */}
                                     </div><br />
                                     <div className="row" style={{ marginTop: '-0.5vw' }}>
                                         <div className="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -277,16 +298,16 @@ class SingUpForm extends Component {
                                     <div className="col-12 ">
                                         <label style={{ marginBottom: '0px' }}>
                                             <span className="school10">
-                                                Company name:
+                                                Name:
                                                 </span>
                                         </label>
                                         <Form.Item>
-                                            {getFieldDecorator('companyName', {
-                                                initialValue: companyName,
-                                                rules: [{ required: true, message: 'Please enter your company name' }],
+                                            {getFieldDecorator('name', {
+                                                initialValue: name,
+                                                rules: [{ required: true, message: 'Please enter your Name' }],
                                             })(
                                                 <Input
-                                                    placeholder="Company name"
+                                                    placeholder="Name"
                                                     className="bid_Input"
                                                 />
                                             )}
@@ -363,7 +384,7 @@ class SingUpForm extends Component {
                                     </div>
                                 </div><br />
                                 <div className="row" style={{ marginTop: '-1.5vw' }}>
-                                    <div className="col-12 ">
+                                    {/* <div className="col-12 ">
                                         <label style={{ marginBottom: '0px' }}>
                                             <span className="school10">
                                                 Landline no :
@@ -385,7 +406,7 @@ class SingUpForm extends Component {
                                                 />
                                             )}
                                         </Form.Item>
-                                    </div>
+                                    </div> */}
                                     <div className="col-12 ">
                                         <label style={{ marginBottom: '0px' }}>
                                             <span className="school10">

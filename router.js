@@ -16,7 +16,9 @@ module.exports = function (app) {
   //app.post('/signin',requireSignin,  Authentication.signin);
   app.post('/signup', Authentication.signup);
   app.post('/signin', requireSignin, Authentication.signin);
-  app.post('/changeStatus', Authentication.changeStatus);
+  app.post('/getUserData', Authentication.getUserData);
+
+  // app.post('/changeStatus', Authentication.changeStatus);
 
   app.post('/listadd', listAgencyForm.postAddData);
 
@@ -37,7 +39,7 @@ module.exports = function (app) {
   //get routes
 
   app.get('/getemails', Authentication.getemails);
-  app.get('/getcompanyname', Authentication.getcompanyname);
+  // app.get('/getcompanyname', Authentication.getcompanyname);
   app.get('/getalluser', Authentication.getAllUsers);
 
   app.get('/getbillboard', getAllBillboard.getBillboard);

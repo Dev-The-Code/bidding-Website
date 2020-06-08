@@ -43,7 +43,7 @@ class FormLogin extends Component {
       if (response.code === 200) {
         localStorage.setItem('loggedIn', JSON.stringify(this.state.loggedIn))
         localStorage.setItem('userToken', JSON.stringify(response.token))
-        localStorage.setItem('userName', JSON.stringify(response.companyName))
+        localStorage.setItem('userName', JSON.stringify(response.name))
         localStorage.setItem('userData', JSON.stringify(response))
         this.setState({ isLoader: false, isAlert: false });
         document.getElementById('closss').click();
@@ -72,8 +72,7 @@ class FormLogin extends Component {
     this.setState({
       isLoader: true
     })
-    let role = "buyer";
-    values.role = role;
+    values.bidCoins = 0
     let response = await HttpUtils.post('signup', values);
 
     try {
